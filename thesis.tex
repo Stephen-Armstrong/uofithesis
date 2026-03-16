@@ -11,8 +11,8 @@
         extra-modules={verbatim-mo},
     }
 }
-\documentclass{uofithesis}
-% \documentclass[thesis]{uofithesis} % for a thesis
+%\documentclass{uofithesis}
+\documentclass[thesis]{uofithesis} % for a thesis
 
 % If using math unicode-math is required for math accessibility.
 % If not using math, remove this package.
@@ -100,10 +100,10 @@
 \tableofcontents
 
 
-% Sections make up the Main Text. Always use sectioning commands to create sections, 
-% subsections, etc. Do not use formatting commands to make regular text look like 
-% a section heading, as this will not be tagged properly for accessibility.
-\section{Coffee Consumption Mathematics}
+% Chapters make up the Main Text. Always use sectioning commands to create chapters, 
+% sections, etc. Do not use formatting commands to make regular text look like 
+% a chapter heading, as this will not be tagged properly for accessibility.
+\chapter{Coffee Consumption Mathematics}
 
 Coffee extraction occurs when hot water is poured over coffee grounds, causing 
 desirable compounds such as caffeine, carbohydrates, lipids, melanoidins and 
@@ -128,7 +128,7 @@ This means that an extraction yield of 20\% can be obtained by brewing 18 grams
 of coffee, resulting a 36-gram final beverage with a $t$ of 10\%. Yield can also 
 be expressed as total dissolved solids, or parts-per-million (ppm).
 
-\section{Coffee Berries}
+\chapter{Coffee Berries}
 
 A coffee bean is a seed from the Coffea plant and the source for coffee. This 
 fruit is often referred to as a coffee cherry, but unlike the cherry, which 
@@ -147,7 +147,7 @@ seeds with their flat sides together.
 \end{figure}
 \tagstructend
 
-\subsection{Characteristics of Coffee Berries}
+\section{Characteristics of Coffee Berries}
 
 The two most economically important varieties of coffee plants are the arabica 
 and the robusta; approximately 60\% of the coffee produced worldwide is arabica 
@@ -206,7 +206,7 @@ The following table summarizes key information about coffee berries:
 \end{table}
 \tagstructend
 
-\section{Coffee Chemistry}
+\chapter{Coffee Chemistry}
 
 Caffeine \ce{C8H10N4O2} is a central nervous system (CNS) stimulant of the 
 methylxanthine class and is the most commonly consumed psychoactive substance 
@@ -232,7 +232,7 @@ steeping the plant product in water, a process called infusion.
 Overall population mean coffee consumption was stable from 2003 to 2012
 \cite{LOFTFIELD20161762}.
 
-\section{Coffee Charts}
+\chapter{Coffee Charts}
 
 Data visualization is an important aspect of understanding coffee consumption 
 patterns and production statistics. The following chart displays typical daily 
@@ -299,10 +299,10 @@ week, peaking on Thursday and Friday, followed by a decline over the weekend.
 
 \printbibliography[heading=bibintoc,title={References}]
 
-% For an appendix without the chapter numbering, use \section* and add it to 
+% For an appendix without the chapter numbering, use \chapter* and add it to 
 % the table of contents manually with \addcontentsline
-\section*{Appendix A: Coffee Survey}
-\addcontentsline{toc}{section}{Appendix A: Coffee Survey}
+\chapter*{Appendix A: Coffee Survey}
+\addcontentsline{toc}{chapter}{Appendix A: Coffee Survey}
 
 \begin{enumerate}
     \item How many cups of coffee do you consume on an average weekday?

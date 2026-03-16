@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}[2025/11/01]
 \ProvidesClass{uofithesis}[2026/03/03 v1.2 University of Illinois Graduate College Dissertation/Thesis Class]
 
-\LoadClass[letterpaper,12pt,oneside]{article}
+\LoadClass[letterpaper,12pt,oneside]{report}
 
 \RequirePackage[english]{babel}
 \RequirePackage{geometry}
@@ -10,6 +10,11 @@
 \RequirePackage{sectsty}
 \RequirePackage{float}
 \RequirePackage{fontsetup}
+
+% titlesec is not compatible with tagging according to this issue:
+% https://github.com/latex3/tagging-project/issues/24 
+% But it is needed to format titles according to Graduate College requirements, so we will use it
+\RequirePackage[nostruts,compact,noindentafter]{titlesec}
 
 % pgfplots configuration for accessible color schemes
 \RequirePackage{etoolbox}
@@ -33,12 +38,20 @@
 }
 
 % Styles
+\titleformat{\chapter}
+    [hang]
+    {\normalfont\bfseries\fontsize{12pt}{14.4pt}\selectfont\centering}
+    {\thechapter}
+    {1em}
+    {}
+    {}
+\titlespacing{\chapter}{0em}{-2em}{1em}
 
 \newgeometry{margin=1in}
 \allsectionsfont{\normalfont\bfseries\fontsize{12pt}{14.4pt}\selectfont\centering}
+\sectionfont{\normalfont\bfseries\fontsize{12pt}{14.4pt}\selectfont\raggedright}
 \subsectionfont{\normalfont\bfseries\fontsize{12pt}{14.4pt}\selectfont\raggedright}
-\subsubsectionfont{\normalfont\bfseries\fontsize{12pt}{14.4pt}\selectfont\raggedright}
-\AddToHook{cmd/section/before}{\clearpage}
+\AddToHook{cmd/chapter/before}{\clearpage}
 
 % Options for the title page
 \newcommand{\department}[1]{\def\@department{#1}}
@@ -160,7 +173,7 @@
 % Abstract environment
 \renewenvironment{abstract}{%
     \thispagestyle{plain}
-    \section*{Abstract}
+    \chapter*{Abstract}
     \vspace{12pt}
     \doublespacing
 }{%
@@ -169,21 +182,30 @@
 % Acknowledgements environment
 \newenvironment{acknowledgements}{%
     \thispagestyle{plain}
-    \section*{Acknowledgements}
+    \chapter*{Acknowledgements}
     \vspace{12pt}
     \doublespacing
 }{%
 }
+
 
 % Adjust ToC line height
 % tableofcontents adds its own spacing on top of line height, hence the 12pt line height
 \let\thesis@tableofcontents=\tableofcontents
 \def\tableofcontents{{\fontsize{12pt}{12pt}\selectfont\thesis@tableofcontents}}
 
-\renewcommand{\thesection}{Chapter \arabic{section}}
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thechapter}{Chapter \arabic{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+% These new renew commands are needed to replace the defaults that the report class sets.
+% The report class counts the equation, figure, and table counters within chapters, 
+% which adds "Chapter #ChapterNumber" as a prefix to the numbering. 
+% The Graduate College formatting requirements specify that these should be numbered sequentially 
+% throughout the document without the chapter "Chapter #ChapterNumber" prefix.
+\renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
 
 % Include sections and subsections in the ToC, but exclude subsubsections.
 \AtBeginDocument{\setcounter{tocdepth}{2}}
-\renewcommand*{\l@section}{\@dottedtocline{1}{1.5em}{5em}}
-\renewcommand*{\l@subsection}{\@dottedtocline{2}{3em}{2.5em}}
+\renewcommand*{\l@chapter}{\@dottedtocline{1}{1.5em}{5em}}
+\renewcommand*{\l@section}{\@dottedtocline{2}{3em}{2.5em}}
