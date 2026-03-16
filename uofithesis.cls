@@ -205,7 +205,7 @@
 \renewcommand{\thefigure}{\arabic{figure}}
 \renewcommand{\thetable}{\arabic{table}}
 
-% Include sections and subsections in the ToC, but exclude subsubsections.
-\AtBeginDocument{\setcounter{tocdepth}{2}}
-\renewcommand*{\l@chapter}{\@dottedtocline{1}{1.5em}{5em}}
-\renewcommand*{\l@section}{\@dottedtocline{2}{3em}{2.5em}}
+% Include chapters and sections in the ToC, but exclude subsubsections.
+\AtBeginDocument{\setcounter{tocdepth}{1}}
+\renewcommand*{\l@chapter}{\@dottedtocline{0}{1.5em}{5em}}
+\renewcommand*{\l@section}{\@dottedtocline{1}{3em}{2.5em}}
